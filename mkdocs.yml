@@ -1,0 +1,62 @@
+site_name: 我的项目文档站点
+site_url: https://yourname.github.io/ReactorUMGOnlineDoc/
+site_author: YourName
+site_description: 使用 MkDocs Material 构建的项目文档网站
+
+theme:
+  name: material
+  language: zh
+  palette:
+    scheme: default
+    primary: teal
+    accent: pink
+  font:
+    text: Roboto
+    code: Roboto Mono
+  logo: images/logo.png
+  favicon: images/favicon.ico
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - content.code.copy
+    - content.action.edit
+    - toc.integrate
+
+nav:
+  - 首页: index.md
+  - 安装指南:
+      - Windows 安装: install/windows.md
+      - Linux 安装: install/linux.md
+  - 使用手册:
+      - 入门教程: guide/basic.md
+      - 高级用法: guide/advanced.md
+  - API 文档:
+      - 接口参考: api/reference.md
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - tables
+  - def_list
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+plugins:
+  - search
+  - glightbox
+  
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourname/my-docs-site
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/yourname
