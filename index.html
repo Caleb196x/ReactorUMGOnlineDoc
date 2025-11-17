@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#reactorumg" class="md-skip">
           跳转至
         </a>
       
@@ -355,9 +355,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      快速导航
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      📘 功能特点
+      立即上手
     </span>
   </a>
   
@@ -366,7 +375,16 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      🚀 快速导航
+      核心价值概览
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      推荐操作
     </span>
   </a>
   
@@ -655,22 +673,88 @@
 
 
 
-<h1 id="_1">欢迎来到我的项目文档 👋<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>这是一个基于 <a href="https://squidfunk.github.io/mkdocs-material/">MkDocs Material</a> 构建的静态网站文档。</p>
-<h2 id="_2">📘 功能特点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="reactorumg">ReactorUMG<a class="headerlink" href="#reactorumg" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>让 Unreal Engine 的 UMG/Slate UI 工作流拥抱 <strong>React + TypeScript</strong>，借助 Puerts/PuertsTS 实现热重载、实时预览与 AI 友好迭代。</p>
+</blockquote>
+<p><a class="glightbox" href="./imgs/Cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ReactorUMG 封面" class="md-image--border" src="./imgs/Cover.png" /></a></p>
+<blockquote>
+<p>⚠️ Alpha 阶段：API 与目录可能调整 · 建议先阅读 <a href="guide/faq.md">FAQ</a>。</p>
+</blockquote>
+<h2 id="_1">快速导航<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>项目亮点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>支持平台</td>
+<td>Windows · Android · Linux</td>
+</tr>
+<tr>
+<td>技术栈</td>
+<td>UE5.x · Puerts/PuertsTS · Node.js ≥ 18 · React/TSX</td>
+</tr>
+<tr>
+<td>核心能力</td>
+<td>React 组件、可重用 UI、脚本逻辑、热重载、Spine/Rive 动画</td>
+</tr>
+<tr>
+<td>首要流程</td>
+<td>准备环境 → 安装插件 → 创建 Runtime/Editor UI</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">立即上手<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ol>
+<li>安装 Node.js（推荐 Yarn），并在项目中初始化包管理器。  </li>
+<li>将 <code>ReactorUMG</code> 插件目录放到 <code>&lt;YourUEProject&gt;/Plugins/ReactorUMG</code>（可选放在 Engine 插件目录）。  </li>
+<li>运行 <code>Plugins/ReactorUMG/Tools/setup_win.bat</code> 初始化环境。  </li>
+<li>编辑器中通过 <code>Edit &gt; Plugins</code> 启用插件，并重启。  </li>
+<li>创建 <code>ReactorUIWidget</code>（Runtime）或 <code>EditorUtilityWidget</code>（Editor），进入模板目录开始编写 <code>&lt;AssetName&gt;.tsx</code>。  </li>
+<li>运行时通过蓝图或 C++ 调用 <code>CreateWidget</code>，编辑器中直接预览。</li>
+</ol>
+<h2 id="_3">核心价值概览<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>主题</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Why ReactorUMG</td>
+<td>用 React 替代传统 UMG 的冗余流程，复用 Web 前端最佳实践与 AI 编写体验。</td>
+</tr>
+<tr>
+<td>Key Features</td>
+<td>React 组件 + Hook、AI 友好文本、热重载与实时预览、Spine/Rive 动画、示例模板。</td>
+</tr>
+<tr>
+<td>UI 工作流</td>
+<td>自动生成 <code>TypeScript/src/&lt;Project&gt;/&lt;AssetPath&gt;</code> 目录；<code>launch.tsx</code> 为引导，不要修改。</td>
+</tr>
+<tr>
+<td>命名建议</td>
+<td>Runtime 用 <code>RW_*</code> 前缀，Editor 用 <code>ERW_*</code>，区分运行时的代码路径。</td>
+</tr>
+<tr>
+<td>FAQ 重点</td>
+<td>ReactorUMG 架构依然依赖 UE 渲染，关注组件拆分与性能优化，先阅读 FAQ 减少常见问询。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">推荐操作<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
-<li>📄 基于 Markdown 编写</li>
-<li>🎨 使用 Material 主题</li>
-<li>🔍 内置全文搜索</li>
-<li>🧩 模块化目录结构</li>
-<li>🌐 支持中文显示</li>
-</ul>
-<hr />
-<h2 id="_3">🚀 快速导航<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="install/windows/">安装指南</a></li>
-<li><a href="guide/basic/">使用手册</a></li>
-<li><a href="api/reference/">API 文档</a></li>
+<li><a href="install/windows/">安装指南</a> · 详细的 Windows 安装流程与常见问题。  </li>
+<li><a href="guide/basic/">入门教程</a> · 从创建资产到绑定交互的完整路径。  </li>
+<li><a href="api/reference/">API 文档</a> · React/TS 接口、全局类型、UE 模块绑定。  </li>
+<li><a href="README.md#roadmap">Roadmap &amp; 贡献</a> · 当前计划（如 Tailwind 支持）、贡献流程与 <code>yarn build &amp;&amp; yarn lint &amp;&amp; yarn test</code> 验证命令。  </li>
+<li><a href="README_zh.md">中文文档</a> · 供中文读者阅读的 README 版本。</li>
 </ul>
 
 
