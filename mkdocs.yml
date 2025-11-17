@@ -9,8 +9,6 @@ theme:
   name: material
   language: zh
   custom_dir: docs/overrides
-  logo: https://pica.zhimg.com/80/v2-74ecd899c7c4cc0258930eaff239a21b_1440w.webp
-  favicon: https://i.stardots.io/wcowin/1750090373988.png
   palette:
     - scheme: default
       primary: indigo
@@ -63,7 +61,7 @@ theme:
     alternate: fontawesome/solid/language
 
 repo_url: https://github.com/caleb196x/ReactorUMG # 右上角点击跳转的链接
-repo_name: Wcowin.github.io # 右上角的名字
+repo_name: ReactorUMG # 右上角的名字
 
 nav:
   - 首页: index.md

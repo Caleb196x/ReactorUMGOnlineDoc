@@ -2,7 +2,7 @@
 
 > **Unreal Engine · React/TypeScript UI 工作流**：基于 Puerts/PuertsTS，在 UE 中使用 React 构建 Runtime 与 Editor UI，并提供热重载与实时预览，快速交付 AI 友好的 UMG 体验。
 
-![](./imgs/Cover.png){ width="860" }
+![](./images/Cover.png)
 
 !!! warning "Alpha 阶段"
     API 与目录仍在调整，正式使用前请先阅读常见问题，确认兼容性与升级路径。
