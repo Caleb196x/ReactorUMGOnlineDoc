@@ -64,11 +64,12 @@ repo_url: https://github.com/caleb196x/ReactorUMG # 右上角点击跳转的链�
 repo_name: ReactorUMG # 右上角的名字
 
 nav:
-  - 首页: index.md
-  - 快速入门: quickstart.md
-  - 样例参考: examples/index.md
-  - API: api/index.md
-  - FAQ: faq.md
+  - 概览: index.md
+  - 快速开始: quickstart.md
+  - 使用指南: examples/index.md
+  - 参考手册: api/index.md
+  - 教程与示例: examples/index.md
+  - 其他: faq.md
 
 markdown_extensions:
   - abbr
@@ -215,7 +216,7 @@ extra_css:
   # - https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css # font-awesome表情支持
   # - stylesheets/timeline.css
   # - stylesheets/LiquidGlass.css
-  - about/sty/portfolio.css
+  # - about/sty/portfolio.css
   # - https://cdn.jsdelivr.net/gh/Wcowin/Wcowin.github.io@main/docs/about/sty/portfolio.css
   # - https://cdn.jsdelivr.net/gh/Wcowin/Wcowin.github.io@main/docs/stylesheets/poem.css
 

@@ -1,11 +1,11 @@
 # ReactorUMG
 
+![](./images/horizontal.png)
+
 > **Unreal Engine · React/TypeScript UI 工作流**：基于 Puerts/PuertsTS，在 UE 中使用 React 构建 Runtime 与 Editor UI，并提供热重载与实时预览，快速交付 AI 友好的 UMG 体验。
 
-![](./images/Cover.png)
-
 !!! warning "Alpha 阶段"
-    API 与目录仍在调整，正式使用前请先阅读常见问题，确认兼容性与升级路径。
+    当前为测试版本，可能功能不稳定。不可能完全还原CSS样式，可能存在个别差异。测试热重载。水水水水水。
 
 ## 项目概览
 
