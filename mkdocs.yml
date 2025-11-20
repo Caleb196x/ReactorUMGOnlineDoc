@@ -66,9 +66,9 @@ repo_name: ReactorUMG # 右上角的名字
 nav:
   - 概览: index.md
   - 快速开始: quickstart.md
+  - 教程与示例: examples/examples.md
   - 使用指南: examples/index.md
   - 参考手册: api/index.md
-  - 教程与示例: examples/index.md
   - 其他: faq.md
 
 markdown_extensions:
@@ -221,7 +221,7 @@ extra_css:
   # - https://cdn.jsdelivr.net/gh/Wcowin/Wcowin.github.io@main/docs/stylesheets/poem.css
 
 watch: #监听文件变动自动刷新
-  - docs
+  - docs/
   - mkdocs.yml
   - docs/overrides
 
@@ -232,7 +232,7 @@ hooks:
   - docs/overrides/hooks/related_posts.py
   # - docs/overrides/hooks/toc_optimizer.py
   # - docs/overrides/hooks/last_updated.py
-  # - docs/overrides/hooks/reading_progress.py
+  - docs/overrides/hooks/reading_progress.py
   - docs/overrides/hooks/comments.py       # 新添加的文章页面评论系统
   # - docs/hook-sqlite-js/plugin.py
 

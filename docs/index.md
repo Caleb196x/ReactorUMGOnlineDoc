@@ -2,81 +2,74 @@
 
 ![](./images/horizontal.png)
 
-> **Unreal Engine · React/TypeScript UI 工作流**：基于 Puerts/PuertsTS，在 UE 中使用 React 构建 Runtime 与 Editor UI，并提供热重载与实时预览，快速交付 AI 友好的 UMG 体验。
+## 简介
+
+- **ReactorUMG**是一款面向虚幻引擎（Unreal Engine）的辅助插件，支持开发者基于 React + TypeScript 开发UE编辑器工具UI和游戏运行时UI界面。
+- 插件基于 Puerts 提供的脚本执行能力构建，完整适配了原生的React开发框架，使开发者能够沿用现代Web前端的开发范式，快速实现UI功能的研发与迭代。
+- 在UE层面，使用插件构建的UI界面完全兼容UMG，用法和UMG保持高度一致。
+- 这套基于 TS+React 的脚本开发模式特别适用于结合**AI辅助编程（AI Coding）**，快速生成和调整各类UI界面。
 
 !!! warning "Alpha 阶段"
-    当前为测试版本，可能功能不稳定。不可能完全还原CSS样式，可能存在个别差异。测试热重载。水水水水水。
-
-## 项目概览
-
-| 关键词 | Unreal Engine · UMG/Slate · React/TypeScript · Puerts/PuertsTS · Hot Reload · Live Preview |
-| --- | --- |
-| 支持平台 | Windows · Android · Linux |
-| 适用场景 | 快速搭建 Runtime UI、编辑器工具面板、设计系统/皮肤库 |
-| 推荐实践 | 文本优先、组件化、热重载验证、使用 `RW_`/`ERW_` 前缀区分运行时与编辑器 |
-
-ReactorUMG 帮助团队把前端工程化与 AI 生成的文本代码引入 UMG/Slate，复用 React 组件、Hook、TypeScript 类型体系与测试/ linting 流程，缩短 UI 迭代周期。
+    鉴于游戏内UI通常具有较高的视觉和交互复杂度，当前版本的插件在适配完整度方面尚难以完全满足产品级游戏UI的表现需求。**因此，现阶段我们建议优先将其应用于编辑器扩展工具的UI开发中，实现工具开发提效。**未来，我们也将持续优化其适配能力与渲染性能，适配复杂的游戏UI场景，以逐步覆盖更广泛的应用需求。
 
 ## 核心特性
 
-- React 组件与 Hook：支持函数/类组件、TSX 语法。
-- 可重用 UI：面向设计系统与皮肤的组件复用。
-- 脚本逻辑：TypeScript 定义交互逻辑，复用前端生态。
-- 热重载与实时预览：保存即刷，减少反复打包与资源导入。
-- 动画支持：可加载 Spine、Rive 动画。
-- 示例模板：从简单到高级的 UI 样例，助力快速起步。
+ReactorUMG支持原生React框架，热加载和编辑器实时预览等核心特性，具体见下表：
+
+| 特性 | 说明 |
+| --- | --- |
+| React开发 | 支持 React Hook 、函数/类组件、TSX语法、React容器布局、React原生组件、UMG组件。 |
+| 引擎接口 | 使用 PuerTS 调用引擎和编辑器脚本接口，平替蓝图逻辑。 |
+| 适用场景 | 使用 AICoding 快速搭建编辑器工具面板、运行时UI、设计可复用组件库等。 |
+| 实践开发 | 组件化、热重载验证、编辑器实时预览、使用`RW_`/`ERW_`UI资产前缀区分运行时与编辑器。 |
+| 动画支持 | 支持加载Spine动画文件。 |
+| 示例模板 | 丰富的UI样例，从简单到高级，手把手教您如何使用。 |
+| 支持平台 | 支持Windows Editor · Windows · Android · Linux |
+| UE版本 | >= UE5.0 |
 
 ## 基本要求
 
 - Unreal Engine **5.x**
-- **Node.js ≥18**，推荐 Yarn/PNPM/NPM 任一
-- Windows 10/11 或 Linux
+- **Node.js ≥18**，推荐 Yarn 作为包管理工具
+- Windows 10/11
 
-## 安装与启用速览
+## 为什么要开发这个项目
 
-1. 安装 Node.js（推荐 Yarn 作为包管理器）。
-2. 获取插件：下载最新 Release，或直接 clone 本仓库。
-3. 放置路径：`<YourUEProject>/Plugins/ReactorUMG`（或 `<UE_5.x>/Engine/Plugins/Marketplace/ReactorUMG`）。
-4. 初始化环境：运行 `Plugins/ReactorUMG/Tools/setup_win.bat`。
-5. 在 UE 中启用插件：`Edit > Plugins` 搜索 **ReactorUMG** 启用并重启。
+- **动机**：在当前的AI技术演进中，我持续关注着一个关键问题：如何将 Unreal Engine 中的开发工具与日益成熟的AI技术有效结合，以提升开发效率。我们注意到在实际开发过程中，使用UE蓝图构建UI常伴随大量重复与低效人工操作，例如手动设置页面布局、编写蓝图逻辑等，其产出速度与AI自动生成代码的能力相比差距显著。
+- **现状**：现在借助Figma make等AI设计工具，我们已经能够实现从自然语言描述->设计稿->React代码的前端UI自动化生产流程，而UE中的UI开发流程仍高度依赖人工，导致效率瓶颈明显。与AI相比，当前UE所提供UI工具的效率差异，差不多类似于传统马车与现代火车之间的对比。
+- **破局**： 因此，我们有必要思考：是否有可能在 Unreal Engine 中引入AI辅助生成UI的能力，以改变这一现状？值得庆幸的是，借助 Puerts 插件，我们已经能够在UE环境中高效执行 TypeScript 或 JavaScript 脚本。它为引入 React 生态奠定了基础，我们可以基于UMG框架来适配和重定义 React DOM 的渲染行为，将 React 组件结构映射为UE的UMG界面元素，从而构建一套能够运行于UE内部的 React UI 开发体系。
+- **愿景**：这一技术路径的实现，将使我们能够在游戏开发中充分利用AI在界面生成方面的能力，使用自然语言或设计图自动生成可用的UI，从根本上提升UI模块的开发效率，实现UE界面工作流的现代化转型。
 
-### 创建 UI
 
-- **Runtime UI**：内容浏览器中创建 **ReactorUIWidget**（ReactorUMG > ReactorUMG）；系统生成 `<ProjectDir>/TypeScript/src/<ProjectName>/<AssetPath>` 模板，入口为 `<AssetName>.tsx`。
-- **Editor UI**：创建 **EditorUtilityWidget**（ReactorUMG > EditorUtilityUMG）；模板位于 `<ProjectDir>/TypeScript/src/<ProjectName>/Editor/<AssetPath>`，可直接在编辑器内预览迭代。
-- ⚠️ `launch.tsx` 为引导文件，请勿修改。
+## 阶段目标
 
-## 项目目录示例
+<input type="checkbox" name="target" checked> 适配基本React框架能力，可在UE编辑器下开发React UI界面，满足基本工具开发需求，完善文档和示例教程。
 
-```plain
-MyProject/
-├─ Content/                        # UE assets
-│  └─ JavaScript/                  # JS output
-├─ Plugins/
-│  └─ ReactorUMG/                  # Plugin
-│     ├─ Scripts/
-│     │  ├─ Project/src/reactorUMG/# Project templates
-│     │  └─ System/JavaScript/     # System scripts
-│     └─ Source/                   # C++ source
-├─ TypeScript/                     # Auto-generated React/TS workspace
-│  ├─ src/
-│  │  ├─ MyProject/                # Editor/Runtime UI
-│  │  │  ├─ Editor/                # Editor UI
-│  │  │  └─ RW_Test/               # Runtime UI scripts
-│  │  │     ├─ index.tsx
-│  │  │     ├─ launch.tsx          # UI bootstrap (do not modify)
-│  │  │     └─ RW_Test.tsx         # Actual UI code
-│  │  ├─ reactorUMG/               # Framework
-│  │  └─ types/                    # Puerts/UE types
-│  ├─ node_modules/
-│  ├─ tsconfig.json
-│  └─ package.json
-└─ MyProject.uproject
-```
+<input type="checkbox" name="target"> 设计以ReactorUMG为核心的组件库，提供复杂游戏UI开发能力，提高运行效率和稳定性，打磨成可商用开源产品。
+
+<input type="checkbox" name="target"> 整合现代React开发生态，打造可商用的样例模板库。
+
+## 参与贡献
+
+ReactorUMG 致力于把 **TS + React的开发体验** 带入 **Unreal Engine**，让UE的UI开发工作从“改蓝图、调样式”变成“AI生成”的现代流程。
+这个目标靠一个人完成很难，它需要一整个社区的力量——也需要**正在读这段话的您**。
+
+只要您对我们的项目感兴趣，非常欢迎加入 ReactorUMG 的建设。
+
+您可以这样参与进来：
+
+* 提交 Issue：反馈Bug、提出功能需求、分享使用体验、扩充样例库
+* 提交 PR：修复问题、优化性能、补充类型定义、改进开发者体验
+* 完善文档：补充教程、写Demo、分享最佳实践或踩坑笔记
+* 传播项目：为仓库点个star⭐，在社区/博客中分享你的使用案例
+
+我们相信，每一次小小的提交、每一个认真的Issue、每一条建设性的评论，都在推动 ReactorUMG 变成一个真正好用、好玩的开源 UI 工具链。
+
 
 ## 下一步
 
-- 查阅 **快速入门** 完成首次搭建。
-- 在 **样例参考** 复用或创建组件模板。
-- 在 **API** 页面逐步补充可复用的接口说明。
-- 如遇常见问题，前往 **FAQ**。
+- 查阅 **快速开始** 完成首次搭建。
+- 在 **教程与示例** 提供详细的案例教程和示例，帮助您快速上手。
+- 在 **使用** 查看更丰富的功能，了解如何与UE进行联动开发。
+- 在 **参考手册** 页面查阅每个组件和每个接口应该如何使用。
+- 如遇常见问题，前往 **FAQ**或在 [ReactorUMG]() **github issue**中提交您的问题。

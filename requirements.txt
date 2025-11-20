@@ -58,3 +58,6 @@ lxml>=4.9.0
 
 # 多语言支持
 mkdocs-static-i18n
+click==8.1.7
+livereload
+watchdog
