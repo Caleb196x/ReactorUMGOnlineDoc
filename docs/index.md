@@ -43,11 +43,11 @@ ReactorUMG支持原生React框架，热加载和编辑器实时预览等核心�
 
 ## 阶段目标
 
-<input type="checkbox" name="target" checked> 适配基本React框架能力，可在UE编辑器下开发React UI界面，满足基本工具开发需求，完善文档和示例教程。
+<input type="checkbox" name="target" checked style="pointer-events: none;"> 适配基本React框架能力，可在UE编辑器下开发React UI界面，满足基本工具开发需求，完善文档和示例教程。
 
-<input type="checkbox" name="target"> 设计以ReactorUMG为核心的组件库，提供复杂游戏UI开发能力，提高运行效率和稳定性，打磨成可商用开源产品。
+<input type="checkbox" name="target" style="pointer-events: none;"> 设计以ReactorUMG为核心的组件库，提供复杂游戏UI开发能力，提高运行效率和稳定性，打磨成可商用开源产品。
 
-<input type="checkbox" name="target"> 整合现代React开发生态，打造可商用的样例模板库。
+<input type="checkbox" name="target" style="pointer-events: none;"> 整合现代React开发生态，打造可商用的样例模板库。
 
 ## 参与贡献
 
