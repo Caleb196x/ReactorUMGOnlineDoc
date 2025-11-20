@@ -72,4 +72,4 @@ ReactorUMG 致力于把 **TS + React的开发体验** 带入 **Unreal Engine**�
 - 在 **教程与示例** 提供详细的案例教程和示例，帮助您快速上手。
 - 在 **使用** 查看更丰富的功能，了解如何与UE进行联动开发。
 - 在 **参考手册** 页面查阅每个组件和每个接口应该如何使用。
-- 如遇常见问题，前往 **FAQ**或在 [ReactorUMG]() **github issue**中提交您的问题。
+- 如遇常见问题，前往 **FAQ**或在 [ReactorUMG](https://github.com/Caleb196x/ReactorUMG) **github issue**中提交您的问题。
