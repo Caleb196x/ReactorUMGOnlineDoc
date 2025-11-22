@@ -230,6 +230,8 @@ export class ERU_Sample extends React.Component<{}, State> {
 !!! note "游戏UI目录"
     游戏UI的所有脚本文件放置在`ProjectDir/TypeScript/src/RU_Sample`目录下。
 
+生成的登录界面代码：[RU_Sample.tsx](./files/RU_Sample.tsx)
+
 编辑器中的预览结果如下所示：
 
 ![](./images/starter/GameUIEditor.png){width=600}
