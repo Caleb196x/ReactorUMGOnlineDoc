@@ -227,6 +227,9 @@ export class ERU_Sample extends React.Component<{}, State> {
 接下来，我们将演示如何创建游戏UI，以及如何添加到游戏中。
 
 首先右键点击内容浏览器，选中`ReactorUMG->ReactorUMG`类型资产，并且重命名为`RU_Sample`，打开UI编辑器，并使用AI Coding实现一个登录界面。
+
+![](./images/starter/CreateReactorUMG.png){Width=600}
+
 !!! note "游戏UI目录"
     游戏UI的所有脚本文件放置在`ProjectDir/TypeScript/src/RU_Sample`目录下。
 
