@@ -1,4 +1,4 @@
-# 快速入门
+# 快速开始
 
 > 快速入门旨在帮助您从零开始体验如何在UE中使用React UI开发出一套简单的编辑器工具界面。在这过程中，我们将借助AI Coding来实现所有代码逻辑，以此说明AI Coding可以为UE的原生UI开发带来什么样的可能性。最后我们也会介绍游戏UI的创建和使用，以及对 React UI 的运行原理做简单讲解。
 
@@ -12,7 +12,7 @@
 > - 创建游戏UI
 > - 脚本打包
 > - 目录解读
-> - 运行原理介绍
+> - 原理介绍
 
 > 我们推荐您按以上顺序依次阅读并实践，您也可以选择您感兴趣的任意章节进行查看。
 
@@ -29,12 +29,12 @@
 
 将zip文件解压后得到的`ReactorUMG`目录拷贝到`Engine/Plugins/Marketplace/`下（如果在`Engine/Plugins`没有`Marketplace`目录，那么直接新建一个文件夹即可）
 
-![](./images/Marketplace.png){width=400}
-![](./images/EngineInstall.png){width=400}
+![](./images/starter/Marketplace.png){width=400}
+![](./images/starter/EngineInstall.png){width=400}
 
 并且在项目的`MyProject.uproject`uproject文件中启用插件：
 
-![](./images/EnablePlugin.png){width=500}
+![](./images/starter/EnablePlugin.png){width=500}
 
 
 - 项目目录**（推荐）**
@@ -43,8 +43,8 @@
 
 将zip文件解压后得到的`ReactorUMG`目录放置到项目的`Plugins`目录，参考以下示例：
 
-![](./images/ProjectPlugin.png){width=400}
-![](./images/ProjectInstall.png){width=505}
+![](./images/starter/ProjectPlugin.png){width=400}
+![](./images/starter/ProjectInstall.png){width=505}
 
 ### 源码编译
 
@@ -59,31 +59,188 @@
 
 进入插件目录，找到`Plugins/ReactorUMG/Tools/setup_win.bat`环境初始化脚本。
 
-![](./images/SetupWin.png){width=700}
+![](./images/starter/SetupWin.png){width=700}
 
 注：暂不支持setup_linux.sh。
 
 **双击执行**，执行过程如下：
 
-![](./images/SetupBegin.png){width=370}
-![](./images/SetupProgress.png){width=500}
+![](./images/starter/SetupBegin.png){width=370}
+![](./images/starter/SetupProgress.png){width=500}
 
-初始化完成
+初始化完成信息提示。
 
-![](./images/SetupFinished.png){width=600}
+![](./images/starter/SetupFinished.png){width=600}
 
 环境初始化完成后就可以双击uproject文件来启动项目了。
 
 ## 创建编辑器UI
 
+启动编辑器后，在**内容浏览器**的空白处点击右键弹出资产创建菜单，选中`ReactorUMG->EditorUtilityUMG`。
+
+![](./images/starter/EditorUtilityUMG.png){width=600}
+
+![](./images/starter/ERU_Sample.png){width=600}
+
+将资产重命名为`ERU_Sample`，双击打开编辑器，首次打开会执行编译TS的操作，打开后我们能看到默认界面。
+> 编辑器UI资产建议以`ERU_`前缀进行规范命名，游戏UI建议以`RU_`前缀命名。
+
+![](./images/starter/EditorStart.png){width=600}
+
 ## AI Coding
+
+### 打开脚本工程
+
+使用任意代码编辑器（VS Code/Cursor/WindSurf/Antigravity）打开`ProjectDir/TypeScript`目录，并找到`ERU_Sample`对应的`tsx`脚本文件，位于`ProjectDir/TypeScript/src/Editor/ERU_Sample/ERU_Sample.tsx`，如下图所示：
+
+![](./images/starter/OpenTS.png){width=400}
+![](./images/starter/ScriptFile.png){width=420}
+
+!!! note "路径说明"
+    1. `TypeScript`是ReactUMG的工程项目目录，由模板产生；
+
+    2. `TypeScript/src/Editor`目录用于存放编辑器UI资产的所有脚本文件，子目录的命名规则为`TypeScript/src/Editor/<AssetName>`，`<AssetName>`为UE中的资产名。
+
+    3. `TypeScript/src/Editor/<AssetName>`目录下默认会产生三个文件，分别为`index.ts`、`launch.tsx`、`<AssetName>.tsx`，其中`<AssetName>.tsx`是主界面脚本，新增代码写到此脚本文件中；其余两个文件不在这里讲述，详细内容查看[目录解读](#eng_init)。
+
+### 编写示例
+
+现在我们来做一个打开地图的小工具，输入以下提示词：
+> 使用原生react ui组件写一个UI界面：1.输入框输入地图名；2. 点击按钮时打开地图；3. 检查地图是否存在，如果不存在则在界面底部通过红色字体显示警告信息；4. 代码添加到ERU_Sample组件中；
+
+我这里使用`GPT Codex`插件来完成AI Coding。
+
+![](./images/starter/GPTCodex.png){width=600}
+
+生成后的代码如下：
+
+```TypeScript
+import * as UE from "ue";
+import * as React from "react";
+
+type State = {
+    mapName: string;
+    warning: string;
+};
+
+export class ERU_Sample extends React.Component<{}, State> {
+    state: State = {
+        mapName: "",
+        warning: "",
+    };
+
+    private handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({ mapName: event.target.value, warning: "" });
+    };
+
+    private handleOpenMap = () => {
+        const mapName = this.state.mapName.trim();
+        if (!mapName) {
+            this.setState({ warning: "Please enter a map name" });
+            return;
+        }
+
+        // Assume maps are under /Game/Maps and share the same name as the input
+        const mapPath = `/Game/Maps/${mapName}.${mapName}`;
+        const exist = UE.EditorAssetLibrary.DoAssetsExist(mapPath);
+
+        if (!exist) {
+            this.setState({ warning: `Map "${mapName}" does not exist` });
+            return;
+        }
+
+        this.setState({ warning: "" });
+        UE.EditorLoadingAndSavingUtils.LoadMap(mapPath);
+    };
+
+    render() {
+        const { mapName, warning } = this.state;
+
+        return (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, width: 320 }}>
+                <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                    <span>Map name</span>
+                    <input
+                        type="text"
+                        value={mapName}
+                        onChange={this.handleInputChange}
+                        placeholder="Example: ExampleMap"
+                        style={{ padding: 6, fontSize: 14 }}
+                    />
+                </label>
+
+                <button
+                    onClick={this.handleOpenMap}
+                    style={{ padding: "6px 10px", fontSize: 14, cursor: "pointer" }}
+                >
+                    Open map
+                </button>
+
+                {warning && (
+                    <div style={{ color: "red", marginTop: 4 }}>
+                        {warning}
+                    </div>
+                )}
+            </div>
+        );
+    }
+}
+
+```
+
+我们注意到生成的代码对UE API的调用还不准确，需要我们手动更正一下。
+```TypeScript
+-        const mapPath = `/Game/Maps/${mapName}.${mapName}`;
+-        const exist = UE.EditorAssetLibrary.DoAssetsExist(mapPath);
++       // 改成editor only调用并调整输入参数
++       const mapPath = UE.NewArray(UE.BuiltinString);
++       mapPath.Add(`/Game/Maps/${mapName}.${mapName}`);
++       const exist = UE.EditorAssetLibrary.DoAssetsExist_EditorOnly(mapPath);
+
+-       UE.EditorLoadingAndSavingUtils.LoadMap(mapPath);
++       UE.EditorLoadingAndSavingUtils.LoadMap_EditorOnly(`/Game/Maps/${mapName}.${mapName}`);
+```
+
+!!! note "LLM输出质量"
+    我们会在[教程与示例]()中讲解如何提高LLM的生成质量。核心思想就是让LLM学习UE API的内容。
 
 ## 预览和运行
 
+插件会监控文件变化，当我们修改完脚本后，能够在UI编辑器中看到`Compile`按钮状态为提示编译状态，如下图所示：
+
+![](./images/starter/CompileStatus.png){width=600}
+
+点击编译，编译完成后可以看到静态布局界面：
+
+![](./images/starter/EditorFinish.png){width=600}
+
+点击`Run Utility Widget`运行编辑器UI，并测试功能：
+
+![](./images/starter/SampleRes.png){width=600}
+
+**动态更新**：当我们修改UI界面后，可以点击`Compile`按钮重新动态加载页面；例如，我们将`ERU_Sample`的按钮文字颜色改成蓝色，如下图所示。
+
+![](./images/starter/BlueButton.png){width=600}
+
 ## 创建游戏UI
+
+接下来，我们将演示如何创建游戏UI，以及如何添加到游戏中。
+
+首先右键点击内容浏览器，选中`ReactorUMG->ReactorUMG`类型资产，并且重命名为`RU_Sample`，打开UI编辑器，并使用AI Coding实现一个登录界面。
+!!! note "游戏UI目录"
+    游戏UI的所有脚本文件放置在`ProjectDir/TypeScript/src/RU_Sample`目录下。
+
+编辑器中的预览结果如下所示：
+
+![](./images/starter/GameUIEditor.png){width=600}
+
+实例中我们在关卡蓝图中创建游戏UI Widget（用法与UserWidget一致，使用内置的CreateWidget蓝图库函数）并且添加到视口。
+
+![](./images/starter/LevelCreate.png){Width=360}
+![](./images/starter/RunRes.png){width=400}
 
 ## 脚本打包
 
 ## 目录解读
 
-## 运行原理介绍
+## 原理介绍
