@@ -31,7 +31,7 @@ ReactorUMG支持原生React框架，热加载和编辑器实时预览等核心�
 ## 基本要求
 
 - Unreal Engine **5.x**
-- **Node.js ≥18**，推荐 Yarn 作为包管理工具
+- **Node.js ≥18** 与 **Yarn / PNPM / NPM**（任选其一）
 - Windows 10/11
 
 ## 为什么要开发这个项目
