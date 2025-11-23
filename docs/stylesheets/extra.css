@@ -4,6 +4,10 @@
   --md-primary-fg-color--dark: #518FC1;
 }
 
+.md-header-nav__logo img {
+  width: 200px;  /* 设置为你需要的宽度 */
+  height: auto;  /* 保持宽高比 */
+}
 
 /* 图片样式优化 - 合并相似规则 */
 img.img1, img.img2, img.img3 {
