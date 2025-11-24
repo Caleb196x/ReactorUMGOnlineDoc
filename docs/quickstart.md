@@ -101,7 +101,7 @@
 
     2. `TypeScript/src/Editor`目录用于存放编辑器UI资产的所有脚本文件，子目录的命名规则为`TypeScript/src/Editor/<AssetName>`，`<AssetName>`为UE中的资产名。
 
-    3. `TypeScript/src/Editor/<AssetName>`目录下默认会产生三个文件，分别为`index.ts`、`launch.tsx`、`<AssetName>.tsx`，其中`<AssetName>.tsx`是主界面脚本，新增代码写到此脚本文件中；其余两个文件不在这里讲述，详细内容查看[目录解读](#eng_init)。
+    3. `TypeScript/src/Editor/<AssetName>`目录下默认会产生三个文件，分别为`index.ts`、`launch.tsx`、`<AssetName>.tsx`，其中`<AssetName>.tsx`是主界面脚本，新增代码写到此脚本文件中；其余两个文件不在这里讲述，详细内容查看[目录解读](#dir_parse)。
 
 ### 编写示例
 
@@ -249,7 +249,7 @@ export class ERU_Sample extends React.Component<{}, State> {
 1. 添加`Content/JavaScript`到`Non-Asset Directory`（系统自动完成）。
 2. 使用webpack进行混淆打包；
 
-## 目录解读
+## 目录解读 {#dir_parse}
 
 为了更好地使用插件，了解插件给整个项目带来的变化是必要的，尤其是文件目录这一部分。下面是示例工程的代码目录结构：
 
