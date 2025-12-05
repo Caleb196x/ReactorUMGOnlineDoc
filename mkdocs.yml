@@ -19,8 +19,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  logo: images/TransLogo4.png
-  favicon: images/favicon.ico
+  logo: images/logo-icon-transparent.png
+  favicon: images/logo-favicon.png
   features:
     - navigation.instant
     - navigation.tabs

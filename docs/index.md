@@ -1,6 +1,6 @@
 # ReactorUMG
 
-![](./images/horizontal.png)
+![](./images/Cover.png)
 
 ## 简介
 
